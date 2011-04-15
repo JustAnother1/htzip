@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<HTZipConfig>
+	<IP>127.0.0.1</IP>
+	<Folder>.</Folder>
+	<Port>1234</Port>
+</HTZipConfig>

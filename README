@@ -1,0 +1,39 @@
+HtZip is a lightweight HTTP Server that serves files out of Zip Archives on the server by only uncompressing the requested file.
+
+INSTALL
+
+HTZip can be strted directly and does not need any installation. If you downloaded the Jar File you will need a Java Virtual Machine. The htzip file is a Linux x86/32bit executeable that runs without Java.
+
+USAGE
+
+Start HTZip with java -jar HTZip.jar Config.xml for the Jar file or ./HTZip Config.xml for the Linux binary. HTZip will start up and listen to the IP Address and Port specified in the configuration for incomming HTTP Requests. On incomming requests it will serve files from the folder specified in the XML file.
+
+EXAMPLE
+
+HtZip is able to serve the JDK Documentation without the need to unzip them. If you start HTZip with this XML File
+
+<?xml version="1.0"?>
+<HTZipConfig>
+        <IP>127.0.0.1</IP>
+        <Folder>.</Folder>
+        <Port>1234</Port>
+</HTZipConfig>
+
+and you have the jdk-6-doc.zip file (Suns JDK Javadocs) in the directory sun, then this URL http://127.0.0.1:1234/sun/jdk-6-doc.zip/docs/index.html will bring you directly to the start Page of the JDK6 Javadoc Documentation without unzipping the File.
+
+LICENSE
+
+Copyright (C) 2011  Lars Pötter <Lars_Poetter@gmx.de>
+All Rights Reserved.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 2
+as published by the Free Software Foundation.
+ 
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, see <http://www.gnu.org/licenses/> 

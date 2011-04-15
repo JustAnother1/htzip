@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<project name="HTZip" default="all">
+
+	<property name="build" location="bin"/>
+	<property name="src" location="src"/>
+	<property name="jar" location="HTZip.jar"/>
+	<property name="javadoc" location="bin"/>
+    
+    <path id="project.class.path">
+      <pathelement location="${src}" />   
+    </path>
+          
+	<!-- Delete all *.class Files -->
+    <target name="clean">
+        <!-- Create the time stamp -->      
+        <tstamp>
+             <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+        </tstamp>
+    	<delete dir="${build}"/>
+    	<delete dir="${javadoc}"/>
+    	<delete file="${jar}"/>
+    	<mkdir dir="${build}"/>
+    	<mkdir dir="${javadoc}"/>
+    </target>
+    	
+	<!-- Compile all *.java Files -> create *.class files -->
+	<target name="compile" depends="clean">
+        <javac srcdir="${src}" destdir="${build}" debug="true">
+            <classpath refid="project.class.path"/>
+        </javac>
+    </target>
+
+	<!-- Create Dokumentation -->
+    <target name="javadoc">
+    	<javadoc packagenames="org.poetter.*"
+    	         sourcepath="${src}"
+    	         destdir="${javadoc}"
+    	/>
+    </target>
+	
+	<!-- create the ${jar} file -->
+    <target name="jar" depends="compile">
+    	<jar destfile="${jar}"
+    		 basedir="${build}"
+    		 includes="**/*.class">
+    		<manifest>
+    			<attribute name="Built-By" value="${user.name}"/>
+                <attribute name="Built-Date" value="${TODAY}"/>
+    			<attribute name="Main-Class" value="org.poetter.HTZip.HTZip"/>
+    		</manifest>
+    	</jar>
+    </target>
+	
+	<!-- build everything -->
+    <target name="all" depends="jar, javadoc">
+    	
+    </target>
+
+</project>
